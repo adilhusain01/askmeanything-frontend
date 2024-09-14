@@ -28,7 +28,7 @@ const Header = () => {
         </li>
         {user && (
           <li>
-            <Link onClick={handleLogout} to={'/login'}>
+            <Link onClick={handleLogout} to={'/'}>
               <ExitToAppIcon />
             </Link>
           </li>
