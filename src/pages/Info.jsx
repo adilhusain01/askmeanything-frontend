@@ -10,18 +10,16 @@ const Info = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [answers, setAnswers] = useState([])
   const navigate = useNavigate()
-  const { user } = useAuth() // Get the user from the context
+  const { user } = useAuth()
 
-  // Prepare the questionnaire data for submission
   const questionnaireData = {
-    user: user?.id, // Use the user ID from the context
+    user: user?.id,
     questions: answers.map(({ question, answer }) => ({
       question,
       answer,
     })),
   }
 
-  // Handle answer selection and proceed to the next question or submit
   const handleAnswerSelection = (answer) => {
     setAnswers((prevAnswers) => [
       ...prevAnswers,

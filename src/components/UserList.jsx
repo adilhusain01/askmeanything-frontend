@@ -21,11 +21,16 @@ const UserList = () => {
   }, [])
 
   return (
-    <div className="p-[2rem] flex flex-col bg-[#1c1c24] rounded-xl gap-[1rem]">
+    <div className="h-[70vh] px-[1rem] py-[2rem] flex flex-col bg-[#1c1c24] rounded-xl gap-[1rem] max-w-[25rem]">
       <h1 className="text-[1.5rem] font-bold text-white text-center">
         Connect Now
       </h1>
-      {users && users.map((user) => <UserCard key={user._id} user={user} />)}
+      <div
+        className="max-h-[50vh] px-[1rem] flex flex-col gap-[1rem] overflow-y-scroll scroll-smooth w-full"
+        style={{ scrollbarWidth: 'thin' }}
+      >
+        {users && users.map((user) => <UserCard key={user._id} user={user} />)}
+      </div>
     </div>
   )
 }

@@ -23,6 +23,7 @@ export async function submitQuery(apiKey, sessionId, query) {
     pluginIds: [],
     responseMode: 'sync',
   }
+  // 'plugin-1713962163', 'plugin-1726313227'
 
   try {
     const response = await axios.post(url, body, { headers })

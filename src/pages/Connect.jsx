@@ -60,6 +60,7 @@ const Connect = () => {
   const [sessionId, setSessionId] = useState(null)
   const [userName, setUserName] = useState('')
   const apiKey = '6yFYPvTI8vXITsmZxPgZMLGyBjmiqYpS'
+  const [copied, setCopied] = useState(false)
 
   const fetchUserMetadata = async (userId) => {
     try {
@@ -164,11 +165,17 @@ const Connect = () => {
     }
   }
 
+  const copyUrl = () => {
+    const url = window.location.href
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
   return (
     <main className="grid grid-cols-12 h-screen w-full">
-      <section className="col-span-3 p-[2rem]">
-        {/* dummy dont touch it */}
-      </section>
+      <section className="col-span-3 p-[2rem]"></section>
       <Paper
         className="col-span-6"
         sx={{
@@ -208,16 +215,35 @@ const Connect = () => {
           sx={{ color: '#FEFAE0' }}
         />
       </Paper>
-      <section className="col-span-3 p-[2rem] flex items-center justify-center">
+      <section className="col-span-3 p-[2rem] flex flex-col items-center justify-center gap-[1rem]">
         <div className="p-[1.5rem] flex flex-col bg-[white] gap-[1rem] rounded-xl">
           <h1 className="text-[1.5rem] font-bold text-black text-center">
-            PhotoHeads
+            FaceHeads
           </h1>
           <img
             src={Head}
             alt=""
             className="h-20rem w-[25rem] object-cover rounded-xl"
           />
+        </div>
+
+        <div className="p-[1rem] flex flex-col bg-[white] gap-[1rem] rounded-xl">
+          <h5 className="text-[1rem] text-black font-medium">
+            Copy the Page Link and Attach it to Instagram Bio or any other
+            Social App Bio
+          </h5>
+
+          <button
+            onClick={copyUrl}
+            className="px-[1.25rem] py-[0.5rem] bg-beige rounded-lg max-w-fit"
+          >
+            Copy
+          </button>
+          {copied && (
+            <span className="text-[1rem] text-green-800">
+              Link copied to clipboard!
+            </span>
+          )}
         </div>
       </section>
     </main>

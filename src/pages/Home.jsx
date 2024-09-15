@@ -47,8 +47,8 @@ const Home = () => {
   return (
     <main className="w-full h-screen">
       <Header />
-      <section className="flex flex-row items-center justify-around w-full h-[75vh]">
-        <div className="px-[2.5rem] lg:px-[5rem] flex flex-col items-start justify-center gap-[0rem] leading-tight">
+      <section className="py-[1.5rem] flex flex-row items-center justify-evenly w-full">
+        <div className="flex flex-col items-start justify-center gap-[0rem] leading-tight">
           <h1 className="text-[3.125rem] lg:text-[7.5rem] font-bold text-[#DDA15E]">
             Making Dating
           </h1>
@@ -62,21 +62,43 @@ const Home = () => {
             <h1 className="text-[1.5rem] font-bold text-white text-center">
               #Vibez
             </h1>
-            {['Rizz', 'Cool', 'Nerd', 'C3PO', 'Cinephile'].map((label) => (
-              <article
-                key={label}
-                className="flex items-center justify-between gap-2 text-white"
-              >
-                <Typography variant="h6">{label}</Typography>
-                <Switch
-                  checked={selectedSwitch === label}
-                  onChange={() => handleSwitchChange(label)}
-                />
-              </article>
-            ))}
+            <div
+              className="max-h-[50vh] flex flex-col gap-[1rem] overflow-y-scroll scroll-smooth"
+              style={{ scrollbarWidth: 'thin' }}
+            >
+              {[
+                'Rizz',
+                'Cool',
+                'Nerd',
+                'C3PO',
+                'Cinephile',
+                'Zaphod Beeblebrox',
+                'Harry potter',
+                'Kunal Kamra',
+                'Robert Downey Jr',
+                'Donald Trump',
+                'Tim Cook',
+                'John Green',
+              ].map((label) => (
+                <article
+                  key={label}
+                  className="flex items-center justify-between gap-2 text-white"
+                >
+                  <Typography variant="h6">{label}</Typography>
+                  <Switch
+                    checked={
+                      user ? selectedSwitch === label : selectedSwitch === ''
+                    }
+                    onChange={() => handleSwitchChange(label)}
+                  />
+                </article>
+              ))}
+            </div>
+
             <button
               onClick={handleSave}
               className="p-[0.5rem] text-[1.25rem] font-medium bg-[#DDA15E] text-black rounded-xl cursor-pointer"
+              disabled={!user} // Disable button if user is not logged in
             >
               Save
             </button>

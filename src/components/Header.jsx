@@ -5,7 +5,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import { useAuth } from '../context/authContext'
 
 const Header = () => {
-  const { user, logout } = useAuth() // Get the user and logout function from the context
+  const { user, logout } = useAuth()
 
   const handleLogout = () => {
     logout()
@@ -21,6 +21,13 @@ const Header = () => {
         <li>
           <Link to={'/'}>Home</Link>
         </li>
+        {user && (
+          <li>
+            <li>
+              <Link to={`/connect/${user.id}`}>My Terminal</Link>
+            </li>
+          </li>
+        )}
         <li>
           <Link to={'/profile'}>
             <PersonIcon />
