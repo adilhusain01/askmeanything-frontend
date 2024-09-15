@@ -20,4 +20,4 @@ Your can start your Dating Journey by Interacting with someones Persona, choose 
 
 ### Can be integrated in a Dating App
 
-### Users can drop their Terminal url in the social apps like Instagram, Twitter, Reddit where other people can visit it.
+### Users can drop their Terminal url in the social apps like Instagram, Twitter, Reddit where other people can visit it
